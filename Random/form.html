@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>User Product Backend Demo</title>
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333;
+}
+body {
+	background-color: #FFF;
+}
+h1 {
+	font-size: 20px;
+	color: #000;
+	font-weight: lighter;
+	margin-left: 40px;
+}
+h2 {
+	font-size: 14px;
+	color: #2A2A2A;
+	margin-left: 40px;
+}
+-->
+#container  {
+	width: 585px;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: 0;
+	text-align: left;
+}
+.label {
+	width: 100%;
+}
+.mainContent  {
+	margin: 0; /* the left margin on this div element creates the column down the left side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+	padding: 0 20px 0;
+	width: 100%;
+} 
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+
+
+
+
+form {  /* set width in form, not fieldset (still takes up more room w/ fieldset width */
+  font:100% verdana,arial,sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 500px;
+  max-width: 600px;
+  width: 560px; 
+}
+
+form fieldset {
+  / * clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
+  border-color: #000;
+	border-width: 0px;
+	border-style: solid;
+}
+
+form fieldset legend {
+	font-size:20px; /* bump up legend font size, not too large or it'll overwrite border on left */
+	color: #012b8a;                       /* be careful with padding, it'll shift the nice offset on top of border  */
+}
+
+form label {
+	display: block;  /* block float the labels to left column, set a width */
+	float: left;
+	width: 150px;
+	padding: 0;
+	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
+	text-align: right;
+	font-weight: bolder;
+	border-top-width: 2px;
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+	border-left-width: 2px;
+	border-top-color: #000;
+	border-right-color: #000;
+	border-bottom-color: #000;
+	border-left-color: #000;
+}
+
+form input, form textarea {
+	/* display: inline; inline display must not be set or will hide submit buttons in IE 5x mac */
+	width:auto;      /* set width of form elements to auto-size, otherwise watch for wrap on resize */
+	margin:5px 0 0 10px; /* set margin on left of form elements rather than right of
+                              label aligns textarea better in IE */
+}
+
+form input#reset {
+	margin-left:0px; /* set margin-left back to zero on reset button (set above) */
+}
+
+textarea { overflow: auto; }
+
+form small {
+	display: block;
+	margin: 0 0 5px 160px; /* instructions/comments left margin set to align w/ right column inputs */
+	padding: 1px 3px;
+	font-size: 88%;
+}
+
+form .required{font-weight:bold;} /* uses class instead of div, more efficient */
+
+form br {
+	clear:left; /* setting clear on inputs didn't work consistently, so brs added for degrade */
+}
+
+
+
+
+
+
+
+--> 
+</style>
+<script src="SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+//-->
+</script>
+<link href="SpryAssets/SpryCollapsiblePanel.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="twoColFixLt">
+
+<div id="container">
+
+  <div class="mainContent">
+  
+  <div id="CollapsiblePanel1" class="CollapsiblePanel">
+    <div class="CollapsiblePanelTab" tabindex="0"><h1>Add Product Group</h1>
+    <div>
+      <h2>Group Name Value Here    </h2>
+    </div>
+</div>
+    <div class="CollapsiblePanelContent">
+<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  
+ 
+   <fieldset>
+      
+      <p>
+        <label>Select Manufacturer Category:</label>
+          <small><select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)">
+            <option>Manufacturer Category 1</option>
+            <option>Manufacturer Category 2</option>
+            <option>Manufacturer Category 3</option>
+          </select>
+          </small>
+          &nbsp;
+          </p>
+          
+          
+      <p>
+        <label>Select General Category:</label>
+          <small><select name="jumpMenu2" id="jumpMenu2" onchange="MM_jumpMenu('parent',this,0)">
+            <option>General Category 1</option>
+            <option>General Category 2</option>
+            <option>General Category 3</option>
+        </select>
+        </small></p>
+      <p>
+        <label>Group Name:</label>
+            <input type="text" name="group-name" id="group-name" />
+          
+        </p>
+        <p>
+          <label>Select Main Group Image:</label>
+              <input type="file" name="group-image2" id="group-image2" />
+          <input type="submit" name="add-image" id="add-image" value="Add Image" />
+      </p>
+      <p>
+          <label for="group-description">Group Description: </label>
+        <textarea name="group-description" id="group-description" cols="45" rows="5"></textarea>
+        </p>
+        <p>
+          <label>Group Bullet Points:</label>
+            <textarea name="group-bullet-points" id="group-bullet-points" cols="45" rows="5"></textarea>
+          
+        </p>
+        <p>
+            <label>Add External Video: </label>
+              <input type="file" name="external video" id="external-vid" />
+        
+        <input type="submit" name="Add Additional Video" id="ext-vid" value="Add Additional Video" />
+      </p>
+      <p>
+            <label>External Video Name: </label>
+              <input type="text" name="ext vid name" id="ext-vid-name" />
+            
+      </p>
+        <p>
+          <label>Keywords:</label>
+            <input type="text" name="keywords" id="keywords" />
+          
+      </p>
+        <p>
+        	<label>Status: </label>
+          <small><select name="status" id="status" onchange="MM_jumpMenu('parent',this,0)">
+            <option>Discontinued</option>
+            <option>Active</option>
+            <option>Inactive</option>
+          </select></small>
+          </label>
+        </p>
+        <p>
+        <label>Featured: </label>
+          <small><select name="featured" id="featured" onchange="MM_jumpMenu('parent',this,0)">
+          	<option>Yes</option>
+            <option>No</option>
+            
+          </select></small>
+          
+        </p>
+        <p>
+          <label>Group priority within category (1-100):</label>
+            <input type="text" name="priority" id="priority" />
+          
+        </p>
+        <p>
+          <label>Streetsheet Name:</label>
+            <input type="text" name="streetsheet-name" id="streetsheet-name" />
+          
+        </p>
+        <p>
+          <label>Streetsheet Description: </label>
+            <textarea name="streetsheet-description" id="streetsheet-description" cols="45" rows="5"></textarea>
+         
+        </p>
+        <p>
+          <label>Streetsheet bullet points: </label>
+            <textarea name="streetsheets-bullets" id="streetsheets-bullets" cols="45" rows="5"></textarea>
+          
+        </p>
+        <p>&nbsp;</p>
+<p><label>Attributes: </label>
+  <small><select name="attributes 1" id="attributes 1" onchange="MM_jumpMenu('parent',this,0)">
+    <option>Select Attribute</option>
+    <option>Search Current</option>
+    <option>Add New</option>
+  </select>
+  <select name="attributes 2" id="attributes 2" onchange="MM_jumpMenu('parent',this,0)">
+    <option>Select Attribute</option>
+    <option>Search Current</option>
+    <option>Add New</option>
+  </select></small>
+  <small><select name="attributes 3" id="attributes 3" onchange="MM_jumpMenu('parent',this,0)">
+    <option>Select Attribute</option>
+    <option>Search Current</option>
+    <option>Add New</option>
+  </select>
+  <select name="attributes 4" id="attributes 4" onchange="MM_jumpMenu('parent',this,0)">
+    <option>Select Attribute</option>
+    <option>Search Current</option>
+    <option>Add New</option>
+  </select></small>
+  
+  
+ 
+<center><input type="submit" name="new-column" id="new-column" value="Add New Column" /></center>
+</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <center>
+      <label></label><input name="Save Product Group" type="submit" value="Save Product Group" /></center>
+      
+      </fieldset>
+     
+    </form></div>
+  </div>
+    <p>&nbsp;</p>
+    
+    
+    <div id="CollapsiblePanel2" class="CollapsiblePanel">
+      <div class="CollapsiblePanelTab" tabindex="0"><h1>Add Products</h1></div>
+      <div class="CollapsiblePanelContent">
+<form action="" method="post" enctype="multipart/form-data" name="form2" id="form2">
+  
+  <fieldset>
+    <p>
+      <label>Product Name:</label>
+      <input type="text" name="product-name" id="product-name" />
+<p>
+          <label>Short Name:</label>
+            <input type="text" name="short-name" id="short-name" />
+          
+        </p>
+        
+          <p>
+          <label>Part #:</label>
+            <input type="text" name="part-num" id="part-num" />
+          
+        </p>
+          <p>
+            <label>Select Main Group Image:</label>
+              <input type="file" name="main-group-image" id="main-group-image" />
+            
+            <input type="submit" name="Add Image" id="Add Image" value="Add Image" />
+          </p>
+          <p>
+            <label>Product Description: </label><textarea name="Product Description" id="Product Description" cols="45" rows="5"></textarea><br /><label>Copy from group</label>
+              <input type="checkbox" name="Copy from group" id="Copy from group" />
+              
+              
+            
+          
+            
+          </p>
+      <p>&nbsp;</p>
+          <p>
+            <label>Product Bullet Points: </label><textarea name="Product Description" id="Product Description" cols="45" rows="5"></textarea>
+            <br />
+            
+            <label>Copy from group</label>
+            <input type="checkbox" name="Product Bullet Points" id="Copy from group" />
+              
+              
+          
+            
+      </p>
+          &nbsp;
+           
+            <p><label for="size">Attributes: </label>
+            <input name="Size" type="text" id="Size" value="Size" onfocus="this.value=''"/>
+            <input name="Size-att" type="text" id="Size-att" value="Size Attribute" onfocus="this.value=''"/></p>
+      
+      
+      <p><label for="color"></label>
+      <input name="Color" type="text" id="Color" value="Color" onfocus="this.value=''"/>
+      <input name="Color-att" type="text" id="Color-att" value="Color Attribute" onfocus="this.value=''"/></p>
+      
+      
+            <p><label for="case"></label>           
+            <input name="Per Case" type="text" id="Per Case" value="Per Case" onfocus="this.value=''"/>
+            <input name="Per Case att" type="text" id="Per-Case-att" value="Per Case Attribute" onfocus="this.value=''"/>
+            
+            
+            </p>
+          &nbsp;
+          <p>
+            <label>Add Material Data Sheet: </label>
+              <input type="file" name="material-safety-data" id="material-safety-data" />
+            
+            <input type="submit" name="Add Additional MSDS" id="MSDS" value="Add Additional MSDS" />
+          </p>
+          <p>
+            <label>Name of Material Safety Data Sheet:  </label>
+              <input type="text" name="MSDS-name" id="MSDS-name" />
+            
+          </p>
+          <br />
+          <p>
+            <label>Add Part Breakdown: </label>
+            <input type="file" name="part breakdown" id="part-breakdown" />
+            
+            <input type="submit" name="Add Additional BDS" id="BDS" value="Add Additional BDS" />
+          </p>
+      <p>
+            <label>Name of Part Breakdown: </label>
+              <input type="text" name="BDS-name" id="BDS-name" />
+            
+          </p>
+      <p>
+            <label>Add Technical Data Sheet: </label>
+              <input type="file" name="technical safety data" id="technical-safety-data" />
+        
+            <input type="submit" name="Add Additional TDS" id="TDS" value="Add Additional TDS" />
+      </p>
+      <p>
+            <label>Name of Technical Data Sheet: </label>
+              <input type="text" name="TDS-name" id="TDS-name" />
+              <br />
+            
+      </p>
+          
+          <p>
+            <label>Add Product Data Sheet: </label>
+            <input type="file" name="product data" id="product-data" />
+        
+            <input type="submit" name="Add Additional PDS" id="PDS" value="Add Additional PDS" />
+      </p>
+      <p>
+            <label>Name of Product  Data Sheet: </label>
+              <input type="text" name="PDS-name" id="PDS-name" />
+            
+      </p>
+      
+      <p>
+        <label>Keywords:</label>
+          <input type="text" name="prod-keywords" id="prod-keywords" />
+        
+      </p>
+      <p>
+        <label>Status:</label>
+        <small><select name="prod-status" id="prod-status" onchange="MM_jumpMenu('parent',this,0)">
+          <option>Active</option>
+          <option>Discontinued</option>
+          <option>Inactive</option>
+        </select></small>
+      </p>
+      <p>&nbsp;</p>
+      <p>
+      
+      <center>
+        <label for="submit"></label><input type="submit" name="save prod " id="save-prod" value="Save Product" />
+        <input type="submit" name="save prod copy info" id="save-prod-copy" value="Save Product and Add Another to Group" />
+        </center>
+      </p>
+      </fieldset>
+    </form></div>
+    </div>
+    
+    <p>&nbsp;</p>
+	<!-- end #mainContent --></div>
+	<!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
+<!-- end #container --></div>
+<script type="text/javascript">
+<!--
+var CollapsiblePanel1 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel1");
+var CollapsiblePanel2 = new Spry.Widget.CollapsiblePanel("CollapsiblePanel2");
+
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+
+img { 
+	border: none; 
+} 
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+#main {
+}
+#header {
+	background-image: url(http://images.collisionbuzz.com/images/jcody/colorvision/Welcome-page_01.png);
+	background-repeat: no-repeat;
+	height: 150px;
+	width: 520px;
+}
+#content {
+}
+#footer {
+	background-image: url(http://images.collisionbuzz.com/images/jcody/colorvision/Welcome-page_04.png);
+	height: 42px;
+	width: 520px;
+	padding: 6px 0 0px 0;
+}
+
+.foot-text {
+	padding-top:5px;
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #f2f2fa;
+	line-height:120%;
+}
+
+
+.white {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #13142d;
+	background-image: url(http://images.collisionbuzz.com/images/jcody/colorvision/Welcome-page_02.png);
+	background-repeat: no-repeat;
+	height: 395px;
+	width: 520px;
+}
+.white img {
+	margin-top: 8px;
+}
+#blue {
+	background-image: url(http://images.collisionbuzz.com/images/jcody/colorvision/Welcome-page_03.jpg);
+	background-repeat: no-repeat;
+	height: 693px;
+	width: 520px;
+}
+#blue h1 {
+	font-family: Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #f2f2fa;
+        padding-top:5px;
+	margin:0 0 5px 0;
+	text-align: left;
+}
+#blue p {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	color: #f2f2fa;
+	text-align: left;
+        line-height:120%;    
+        margin:0 0 15px 0;
+}
+.call-text {
+	padding-top: 22px;
+	left: auto;
+	right: auto;
+}
+.about-text {
+	font-size: 14px;
+	padding-top: 85px;
+	left: auto;
+	right: auto;
+	padding-right: 50px;
+	padding-left: 50px;
+}
+.col-left {
+	width: 210px;
+	float: left;
+	margin: 20px 21px 0px 27px;
+}
+.col-left img {
+	position: absolute;
+	top: 840px;
+}
+.col-right {
+	width: 210px;
+	float: left;
+	margin: 20px 21px 0px 27px;
+}
+.col-right img {
+	position: absolute;
+	top: 840px;
+}
+
+.clear {
+	clear: both;
+	margin: 0;
+}
+
+
+#buttons {
+    padding-top:14px;
+    float:left;
+    margin-bottom:20px;
+}
+
+.left {
+    float:left;
+    list-style-image: none;
+    width:257px;
+}
+
+li {
+    height:55px;
+}
+
+#logos {
+    margin-bottom:20px;
+}
+
+#video {
+    margin-bottom:19px;
+}
