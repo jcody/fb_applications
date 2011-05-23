@@ -1,0 +1,51 @@
+<style>
+#slideshow_wrapper { width:530px; clear: both; margin-bottom: 20px; }
+#slideshow { overflow: hidden; width: 435px; float: left; position:relative; margin-right: 5px; }
+#slideshow_inner { position: relative; width: 2000px; }
+/* #slideshow_inner a { opacity:0.7; margin: 0 7px; } */
+#slideshow_inner a:hover { opacity: 1; }
+</style>
+
+<script>
+var numslides = 4;
+var slidesvisible = 1;
+var currentslide = 0;
+var slidewidth = 430;
+function goright() {
+	if (currentslide <= (numslides-slidesvisible-1)) {
+		Animation(document.getElementById('slideshow_inner')).by('right', slidewidth+'px').by('left', '-'+slidewidth+'px').go();
+		if (currentslide == (numslides-slidesvisible-1)) {
+			Animation(document.getElementById('right_button')).to('opacity', '0.3').go();
+			Animation(document.getElementById('left_button')).to('opacity', '1').go();
+		} 
+		if (currentslide < (numslides-slidesvisible-1)) { Animation(document.getElementById('left_button')).to('opacity', '1').go(); }
+		currentslide++;
+	}
+}
+function goleft() {
+	if (currentslide > 0) {
+		Animation(document.getElementById('slideshow_inner')).by('left', slidewidth+'px').by('right', '-'+slidewidth+'px').go();
+		if (currentslide == 1) {
+			Animation(document.getElementById('left_button')).to('opacity', '0.3').go();
+			Animation(document.getElementById('right_button')).to('opacity', '1').go();
+		}
+		if (currentslide > 1) { Animation(document.getElementById('right_button')).to('opacity', '1').go(); }
+		currentslide--;
+	}
+}
+</script>
+
+
+<div id="slideshow_wrapper">
+			<img id="left_button" src="http://joeycody.com/dev/images/left.png" onclick="goleft(); return false;" style="float: left; display: block; width: 41px; cursor: pointer; opacity: 0.3;" />
+		    <div id="slideshow">
+		        <div id="slideshow_inner">
+		            <a id="slide1" href="http://yoururl.com/link1" title="Oronaut Outdoor Blog"><img src="http://joeycody.com/dev/images/solutionsslide2.jpg" /></a> 
+		            <a id="slide2" href="http://yoururl.com/link2" title="Colorado Ski Mountaineering Cup"><img src="http://joeycody.com/dev/images/solutionsslide2.jpg" /></a> 
+		            <a id="slide3" href="http://yoururl.com/link3" title="PowderBlog"><img src="http://joeycody.com/dev/images/solutionsslide2.jpg" /></a> 
+		            <a id="slide4" href="yoururl.com/link4" title="Highland Meadows HOA"><img src="http://joeycody.com/dev/images/solutionsslide2.jpg" /></a> 
+		        </div>
+		    </div>
+		    <img id="right_button" src="http://joeycody.com/dev/images/right.png" onclick="goright(); return false;" style="float: left; display: block; width: 41px; cursor: pointer;" />
+			<p>Click on an image to leave Facebook and visit the Portfolio.</p>
+		</div>

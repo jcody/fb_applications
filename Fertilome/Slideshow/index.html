@@ -1,0 +1,171 @@
+<style type="text/css">
+#wrapper { clear: left; overflow: hidden; position: relative; width: 520px; }
+#slideWrap { clear: both; position: relative; width: 9000px;}
+.slide { float: left; width: 520px; }
+ 
+#wrapper #slideNav { float: right; margin: -2.75em 0 2em 0; }
+	#slideNav li { display: inline; padding: 0; }
+		#slideNav li a {
+			background: url(http://cmcilrath.rssready.net/xcel/assets/images/bg_slideNav.png?v=3) no-repeat -12px top;
+			display: block;
+			float: left;
+			height: 12px;
+			margin-right: .5em;
+			text-decoration: none;
+			text-indent: -999em;
+			width: 12px;
+		}
+		#slideNav li a.next, #slideNav li a.prev { width: 10px; }
+		#slideNav li a.selected { color: #000; background-position: -12px bottom; }
+ 
+		#slideNav li#prevSlide a { background-position: top left; }
+		#slideNav li#prevSlide a.disabled { background-position: bottom left; }
+ 
+		#slideNav li#nextSlide a { background-position: top right; }
+		#slideNav li#nextSlide a.disabled { background-position: bottom right; }
+</style>
+
+
+<script>
+<!--
+function Each(array, block){
+	for (var i=0, l = array.length; i<l; i++){
+		block(array[i]);
+	}
+}
+ 
+var currentSlide = 1;
+var maxSlides = 5;
+var animating = false;
+var slideWidth = 520;
+var currentPX = 0;
+ 
+function nextSlide(){
+	var nextSlideNum = currentSlide + 1;
+	if(nextSlideNum >= maxSlides){ toggleButton('next','disable'); }
+	else if (nextSlideNum == 2 && currentSlide == 1){ toggleButton('prev','enable'); }
+	currentSlide = nextSlideNum;
+	if(animating == false){ scroll('right'); }
+	return false;
+}
+ 
+function prevSlide(){
+	var prevSlideNum = currentSlide - 1;
+	if(prevSlideNum == 1){ toggleButton('prev','disable'); }
+	else if (currentSlide == maxSlides){ toggleButton('next','enable'); }
+	currentSlide = prevSlideNum;
+	if(animating == false){ scroll('left'); }
+	return false;
+}
+ 
+function toggleButton(button,state){
+	if(button == 'next' && state == 'disable'){
+		document.getElementById('nextSlide').setInnerXHTML('<a href="#" class="next disabled">next slide &gt;</a>').removeEventListener('click',nextSlide);
+	}
+	if(button == 'next' && state == 'enable'){
+		document.getElementById('nextSlide').setInnerXHTML('<a href="#" class="next">next slide &gt;</a>').addEventListener('click',nextSlide);
+	}
+	if(button == 'prev' && state == 'disable'){
+		document.getElementById('prevSlide').setInnerXHTML('<a href="#" class="prev disabled">&lt; previous slide</a>').removeEventListener('click',prevSlide);
+	}
+	if(button == 'prev' && state == 'enable'){
+		document.getElementById('prevSlide').setInnerXHTML('<a href="#" class="prev">&lt; previous slide</a>').addEventListener('click',prevSlide);
+	}
+}
+ 
+function scroll(direction){
+	Each(document.getElementById("slideNav").getElementsByTagName("a"), function(as){
+		as.removeClassName("selected");
+	});
+ 
+	document.getElementById("slideNav-"+currentSlide).addClassName("selected");
+ 
+	animating = true;
+	var pixelShift = slideWidth * (currentSlide-1);
+	var startingSlideNum = currentSlide;
+	var Slide_container = document.getElementById('slideWrap');
+ 
+	if(direction == 'left'){
+		Animation(Slide_container)
+			.by('left', '-' + pixelShift + 'px').from('-' + currentPX + 'px')
+			.by('right', '-' + pixelShift + 'px').from(currentPX + 'px')
+			.duration(300).ease(Animation.ease.both).checkpoint(1, function() {
+				if(startingSlideNum == currentSlide){ animating=false; }
+				else { scroll('left'); }
+		}).go();
+	}
+	if(direction == 'right'){
+		Animation(Slide_container)
+			.by('right', pixelShift + 'px').from(currentPX + 'px')
+			.by('left', '-' + pixelShift + 'px').from('-' + currentPX + 'px')
+			.duration(300).ease(Animation.ease.both).checkpoint(1, function() {
+				if(startingSlideNum == currentSlide){ animating=false; }
+				else { scroll('right'); }
+		}).go();
+	}
+ 
+	currentPX = pixelShift;
+}
+ 
+function showSlide(num){
+	startingSlide = currentSlide;
+	currentSlide = num;
+ 
+	if(num > startingSlide){ scroll('left'); }
+	else if (num < startingSlide) { scroll('right'); }
+ 
+	if (startingSlide == maxSlides && currentSlide == 1){ toggleButton('next','enable'); toggleButton('prev','disable'); }
+	else if (currentSlide == maxSlides && startingSlide == 1){ toggleButton('prev','enable'); toggleButton('next','disable'); }
+	else if (currentSlide == 1){ toggleButton('prev','disable'); }
+	else if (currentSlide == maxSlides){ toggleButton('next','disable'); }
+	else if (startingSlide == 1) { toggleButton('prev','enable'); }
+	else if (startingSlide == maxSlides) { toggleButton('next','enable'); }
+}
+//-->
+</script>
+
+
+<div id="wrapper">
+	<h2>Header</h2>
+	<ul id="slideNav">
+		<li id="prevSlide"><a href="#" class="prev disabled">&lt; previous slide</a></li>
+		<li><a href="#" id="slideNav-1" onclick="showSlide(1); return false;" class="selected">1</a></li>
+		<li><a href="#" id="slideNav-2" onclick="showSlide(2); return false;">2</a></li>
+		<li><a href="#" id="slideNav-3" onclick="showSlide(3); return false;">3</a></li>
+		<li><a href="#" id="slideNav-4" onclick="showSlide(4); return false;">4</a></li>
+		<li><a href="#" id="slideNav-5" onclick="showSlide(5); return false;">5</a></li>
+		<li id="nextSlide"><a href="#" class="next" onclick="nextSlide(); return false;">&gt;</a></li>
+	</ul>
+	<div id="slideWrap">
+        <div id="slide_1" class="slide">
+			<h3><a href="#">Title 1</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+ 
+        <div id="slide_2" class="slide">
+			<h3><a href="#">Title 2</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+ 
+        <div id="slide_3" class="slide">
+			<h3><a href="#">Title 3</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+ 
+        <div id="slide_4" class="slide">
+			<h3><a href="#">Title 4</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+ 
+        <div id="slide_5" class="slide">
+			<h3><a href="#">Title 5</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+	</div>
+	<!-- end slideWrap -->
+</div>
