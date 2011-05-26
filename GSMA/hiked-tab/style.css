@@ -1,0 +1,27 @@
+#slideshow_wrapper { 
+	width:520px; 
+	height:200px;
+	clear: both; 
+	margin-bottom: 20px; 
+}
+#slideshow { 
+	overflow: hidden; 
+	width: 520px; 
+	float: left; 
+	position:relative; 
+	margin-right: 0px; 
+	margin-bottom:40px;
+}
+#slideshow_inner { 
+	position: relative; 
+	width: 3000px; 
+}
+/* #slideshow_inner a { opacity:0.7; margin: 0 7px; } */
+#slideshow_inner a:hover { 
+	opacity: 1; 
+}
+
+#wrapper {
+width:520px;
+margin:0 auto;
+}
