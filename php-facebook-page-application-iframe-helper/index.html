@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Facebook Page App Class</title>
+<link href="assets/style.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+<div id="container">
+	<div id="wrapper">
+    	<div class="center">
+    	<h3>&quot;Facebook Page App Class&quot; Documentation v1.0</h3>
+        </div>
+        <div class="border"></div>
+        <div class="center">
+        <h1>Facebook Page Application Class</h1>
+        </div>
+        <div class="border"></div>
+        <div class="left">
+        Created: 14/02/2011<br />
+        By: d3signworx<br />
+        Email: admin@webelixir.co.uk
+        </div>
+        <div class="right center">
+        <p>Thank you for purchasing my Facebook Page Application helper class</p>
+        <p>If you have any questions or require any support that is not covered within this help file then please feel free to contact me on my codecanyon page
+        <a href="http://codecanyon.net/user/d3signworx">here</a></p>
+        <p>This guide assumes you have access to a web server that is capable of serving php files</p>
+        </div>
+        <div class="border"></div>
+        <h2>Contents</h2>
+        <a name="toc"></a>
+        <ol id="toc">
+        <li><a href="#1">Introduction</a></li>
+        <li><a href="#2">Setting up a Facebook Page</a></li>
+        <li><a href="#3">Setting up a Facebook App</a></li>
+        <li><a href="#4">A Sample Application</a></li>
+        <li><a href="#5">Using the Facebook Page App Class</a></li>
+        <li><a href="#6">Extended Permissions and the Open Graph</a></li>
+        </ol>
+        <div class="border"></div>
+        <a name="1"></a><a href="#toc">Top</a>
+        <div>
+        <h3>Introduction</h3>
+        <p>Facebook have recently allowed iFrame applications to be used on Business/Fan pages . This opens up more information for developers and page owners.</p>
+		<p>In the old days any content that you only wanted to be visible to users who 'liked' your page could still view the source of a page and get access to the hidden content, iFrame apps remove this loophole and this helper class allows you to easily test i a user likes your page or is ad admin of the page in question. This allows you to customise apps to a number of pages, hide content from users who don't like your page (and make it easier to offer incentives to those that do) and to offer customisation/enhanced options to page admins</p>
+<p>I've also included the code to check if a user has authorised the application so that apps can be further customised to individual users using the open graph.</p>
+<p>This guide will demonstrate how to set-up a facebook page, a facebook application to use within the page, and how to implement the facebook_page_app class</p>
+		</div>
+        <div class="border"></div>
+        <a name="2"></a><a href="#toc">Top</a>
+        <h3>Setting Up a Facebook Page</h3>
+        <p>To set-up a facebook page, sign in to your Facebook account and navigate to <a href="http://www.facebook.com/pages/" target="_top">http://www.facebook.com/pages/</a> 
+        To set-up a new page, click the <b>create page</b> link in the top right.<br />
+        <img src="assets/create-page.jpg" alt="Create Page" /><br />
+        You will then be presented with a menu to choose the type of page that is most applicable for you. For the purposes of this demo I have selected &quot;Company, Organization, or Institution&quot; Fill in the form that is presented to you with you company name etc. and agree to the terms &amp; conditions. Then click the button labelled &quot;Get Started&quot;<br />
+         <img src="assets/create-page-menu.jpg" alt="Create Page Menu" /><br />
+         You should then be sent on to your new Page! Now lets create an app!<br />
+         For now leave this browser window open as we will be returning to it!
+        </p>
+        <div class="border"></div>
+        <a name="3"></a><a href="#toc">Top</a>
+        <h3>Setting up a Facebook App</h3>
+        <p>To create a facebook application you must first navigate to <a href="http://www.facebook.com/developers/">http://www.facebook.com/developers/</a>. You will then be presented with the Facebook development blog (useful information about updates here) and a button that lets you set-up a new app. Click the <b>Set Up New App</b> button or the <b>Create one</b> link.</p>
+        <p class="alert">Please note at this point you may be asked to verify your Facebook account with either a mobile phone number or a credit/debit card. This is a requirement of setting up a facebook application.</p>
+        <img src="assets/create-app-1.jpg" alt="Create Application" /><br />
+        <p>You will then be presented with a form to choose a name for your application - choose something that represents what you want your application to do and relates to the tab name you wish to call it. After this you will be presented with a CAPTCHA form. Again fill this in and continue.</p>
+        <p>You will then be presented with a tabbed form that allows to enter a number of details about your application; You can edit the name, description and who to contact with regards to your app on the <b>About</b> tab.<br />
+        <img src="assets/about-tab.jpg" alt="about tab" /><br />
+        Next, select the <b>Web Site</b> tab and enter your site url - <b>Remember the trailing slash (/)</b>. The <b>domain</b> is not required so it's up to you if you fill it in.<br />
+        <img src="assets/website-tab.jpg" alt="website tab" /><br />
+        Now let's move on to the <b>Facebook Integration</b> Tab.
+        There are a number of fields here that require filling in. The <b>Canvas Page</b> needs a unique name specific to your app. This is the url that users would click to navigate to your application on Facebook. The <b>Canvas URL</b> should be a url on <b>your</b> website that will server the content when a user lands on you <b>Canvas Page</b> url. Again this must end with a trailing slash (/) or a question mark (?) . As such both the following are valid
+   <ul><li>http://www.your-site.com/</li><li>http://www.your-site.com/canvas.php?</li></ul>
+   For <b>Canvas Type</b> select <b>iFrame</b>.<br />
+   Finally under the <b>Page Tabs</b> sub-heading . Set the <b>Page Tab Type</b> to <b>Iframe</b>, enter a <b>Tab Name</b> ( What will appear on the LHN of your Facebook Page)<br />
+   Next set the <b>Tab Url</b> to the name of a file that resides on your server e.g <b>index.php</b> or <b>tab.php</b>. Then select <b>Save Changes</b><br />
+        <img src="assets/integration-tab.jpg" alt="integration tab" /><br />
+        You will then be returned to the main application screen.
+        </p>
+        <p class="notice">On this screen make a note of your <b>App Id</b> and <b>App Secret</b>. We will need these to set-up the Facebook Page Tab Class and for further integration with Facebook.
+        
+        </p>
+        <p> <img src="assets/app-id-secret.jpg" alt="App Id and Secret" /></p>
+   		<div class="border"></div>
+        <a name="4"></a><a href="#toc">Top</a>
+        <h3>A Sample Application</h3>
+        <p>Now let's get started creating a very simple application to use on our facebook page. This can be an extremely simple page that merely serves html content, but is must be named the same sa the <b>Tab Url</b> we set in the previous chapter. For our sample application, we're just going to present a simple message to users, it does not require them to have 'liked' our page or anything else. All users will see this message. Copy and paste the following code into your preferred editor and save the file with the same name you used in the <b>Tab URL</b> section of your Application settings. Alternatively use the file located in the <b>simple</b> folder of the download.</p>
+        <code>
+        	&lt;!DOCTYPE html&gt; <br />
+            &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;<br />
+            &lt;head&gt;<br />
+            &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;<br />
+            &lt;title&gt;Our sample application&lt;/title&gt;<br />
+            &lt;/head&gt;<br />
+            
+            &lt;body&gt;<br />
+            Hi and welcome to my page! This is a custom application<br />
+            &lt;/body&gt;<br />
+            &lt;/html&gt;<br />
+        </code>
+        <p>Upload this file to your webserver. Then navigate back to <a href="http://www.facebook.com/developers/">http://www.facebook.com/developers/</a> and click the <b>more</b> link that appears next to your application name. From the menu that appears select <b>Application Profile Page</b>. This will take you to the facebook page that is the "public profile" of your application. It is from this page that we will add your application to our facebook page; On the left hand-side you should see a link labelled <b>Add to my Page</b>. Click this link and you will be presented with a list of all the facebook page of which you are an admin. Select the page that you wish to add the application to.</p>
+        <p><img src="assets/add-to-page.jpg" alt=" add to page" /></p>
+        <p>Once complete, navigate back to your newly created facebook page and you should see a new link on the left hand side with the name you entered in the <b>Tab Name</b> section when setting up your application. Clicking this tab should show the html we created earlier as in the following image</p>
+        <p><img src="assets/app-test.jpg" alt="App test" /></p>
+        <p>Congratulations, you've just created your Facebook Page Application. In the next section we will look at adding the Facebook Page App Class to display different content to users who like our page and those who don't!</p>
+        <div class="border"></div>
+         <a name="5"></a><a href="#toc">Top</a>
+        <h3>Using the Facebook Page App Class</h3>
+        <p>For this section we will use the Facebook Page App class to tell if a user likes our page. If they do we will present them with some hidden content. If they don't we'll ask them to like our page! First things first we need to make sure that our page is a php page. Next we need to upload the "facebook_page_app.php" class to our web server. For the sake of this tutorial put it in the same folder as your php file that has your app content in. Next copy and past the following code to use as your application, replacing <b>$APP_SECRET</b> with your application secret, from your application profile page. Alternatively use the file in the <b>medium</b> folder of the download</p>
+        <code>
+                &lt;!DOCTYPE html&gt; <br />
+        &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;<br />
+        &lt;head&gt;<br />
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;<br />
+        &lt;title&gt;Our sample application&lt;/title&gt;<br />
+        &lt;/head&gt;<br />
+        &lt;body&gt;<br />
+        &lt;?php <br />
+        $APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"; // REPLACE ME WITH YOU APP SECRET<br />
+        include_once("facebook_page_app.php");<br />
+        $fpa = new Facebook_page_app($APP_SECRET);<br />
+        ?&gt;<br />
+        &lt;p&gt;Hi and welcome to my page! This is a custom application&lt;/p&gt;<br />
+        
+        &lt;?php<br />
+        //Lets check if the user likes our page - to do this we just call the isUserFan() method of our Facebook_page_app object<br />
+        if($fpa-&gt;isUserFan()){<br />
+         echo "&lt;p&gt;Thanks very much for liking us on Facebook. As such let us present you with this exclusive voucher code for use on our website:&lt;br /&gt;<br />
+         code:   VOUCHER123<br />
+         &lt;/p&gt;<br />
+         &lt;p&gt;Once again many thanks -&lt;br /&gt;Our Website Team&lt;/p&gt; ";	<br />
+        
+         }else{ // Doesn't look like they are a fan. Lets get them to sign up<br />
+             echo "&lt;p&gt;It looks like you aren't a fan of ours! Click the &quot;Like&quot; link at the top of the page to get exclusive offers!&lt;/p&gt;";<br />
+             
+         }<br />
+         ?&gt;<br />
+        
+        &lt;/body&gt;<br />
+        &lt;/html&gt;
+
+        </code>
+        <p>All we are doing here is creating a new instance of the Facebook Page App Class and assigning it to the variable $fpa. We then use the method isUserFan() to see if a user likes our page or not. This method merely returns true or false. At this point, unless you've clicked <b>like</b> on your fan page you should see something similar to below. If you do like the page however, you should see the thank you message and voucher code! It's that simple!</p>
+      <p><img src="assets/app-test-2.jpg" alt="App test" /></p>
+      <p>The beauty of iFrame apps though, is that you can deeplink now to specific content using the <b>app_data</b> querystring. Before you had to use javascript to hide and display content in Facebook Page applications. The Facebook_App_Class helps you to do this by encoding and decoding your app_data parameters into an array you can use to test if a certain variable is set. An example of this can be seen below. </p>
+      <code>
+      &lt;!DOCTYPE html&gt; <br />
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;<br />
+&lt;head&gt;<br />
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;<br />
+&lt;title&gt;Our sample application&lt;/title&gt;<br />
+&lt;/head&gt;<br />
+&lt;body&gt;<br />
+&lt;?php <br />
+$APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";<br />
+include_once("facebook_page_app.php");<br />
+$fpa = new Facebook_page_app($APP_SECRET); <br />
+$page_url = "http://www.facebook.com/pages/Your-Page/YourPageId?sk=app_YourAppId"; // Replace this with the url of your page on facebook with your app selected<br />
+$app_data = $fpa-&gt;decodeAppData(); // This method looks for the presence of a submitted querystring<br />
+?&gt;<br />
+&lt;p&gt;Hi and welcome to my page! This is a custom application&lt;/p&gt;<br />
+
+&lt;?php<br />
+//Lets check if the user likes our page - to do this we just call the isUserFan() method of our Facebook_page_app object<br />
+if($fpa-&gt;isUserFan()){<br />
+ echo "&lt;p&gt;Thanks very much for liking us on Facebook. As such let us present you with this exclusive voucher code for use on our website:&lt;br /&gt;<br />
+ code:   VOUCHER123<br />
+ &lt;/p&gt;<br />
+ &lt;p&gt;Once again many thanks -&lt;br /&gt;Our Website Team&lt;/p&gt; ";	<br />
+
+ }else{ // Doesn't look like they are a fan. Lets get them to sign up<br />
+	 echo "&lt;p&gt;It looks like you aren't a fan of ours! Click the &quot;Like&quot; link at the top of the page to get exclusive offers!&lt;/p&gt;";<br />
+	 
+ }<br />
+ 
+ // This next method create a link with a custom querystring for us to use. We can use querystring syntax or an array<br />
+ // QueryString<br />
+ echo "&lt;p&gt;&lt;a href=\"$page_url&app_data=". $fpa-&gt;encodeAppData("val=9&foo=bar")."\" target=\"_top\"&gt;test&lt;/a&gt;&lt;/p&gt;";<br />
+ // ARRAY<br />
+ $params['val'] = 1;<br />
+$params['foo'] = 'bar';<br />
+ echo "&lt;p&gt;&lt;a href=\"$page_url&app_data=". $fpa-&gt;encodeAppData($params)."\" target=\"_top\"&gt;test&lt;/a&gt;&lt;/p&gt;";<br />
+ 
+ if($app_data['foo'] === "bar"){<br />
+	 echo "&lt;p&gt;I only want to display this content if 'foo' is set to 'bar'&lt;/p&gt;"; <br />
+ }<br />
+ // Print out entire QS<br />
+ print_r($app_data); // Display the querystring<br />
+ 
+ ?&gt;<br />
+
+&lt;/body&gt;<br />
+&lt;/html&gt;<br />
+
+      </code>
+      <p>In this code I've added a few new lines. The <b>$page_url</b> variable is used to hold the full http:// address of our page on facebook. I use this variable purely to make creating links easier. The reason we have to do this, is because the app_data querystring only works when we set the <b>target</b> attribute of any links to <b>_top</b>. This means our links reload the entire page, not just our iFrame within Facebook.</p>
+      <p>After this I've created the <b>$app_data</b> variable. This variable is assigned the output of the <b>decodeAppData()</b> function that returns our querystring for us. We can then check for the reference of our querystring values using the format <b>$app_data['foo']</b>, where &quot;foo&quot; is the name of the variable we wish to check for.</p>
+      <p>Further down you can see I create 2 links. Both of them use the <b>encodeAppData</b> function. This is where we want to create a link to our page passing in custom data. The <b>encodeAppData</b> function can except a string in the format of a standard querystring in the format <b>foo=bar&value_2=myVal </b> or you can pass in an array of key value pairs as in the second example <b>$params['foo'] = bar;</b>. We use the page url in the href and append the app_data querystring with our encoded values. Again notice we set the <b>target</b> attribute to <b>_top</b>. We then use an if statement to check for the existance of the <b>"foo"</b> variable in our querystring. Just to round this off I have then printed the entire contents of our $app_data querystring.</p>
+      <p>If you click one of the links then hopefully now you should see a page similar to the following! </p>
+      <p><img src="assets/app-data.jpg" alt="app data" /></p>
+      <p class="alert">Please note that Facebook_Page_App does not sanitize any of your data when encoding and decoding your app_data querystring. You should make sure you do this yourself ,especially if using the values with a database</p>
+      <p>Finally, Facebook_Page_App also offers the method isUserAdmin() that will return true if the current user is an admin of the page in question. This method can be called as follows</p>
+     <p> <code>
+      &lt;?php
+      if($fpa->isUserAdmin()){
+       echo "&lt;p&gt;This is extra content available to admins only&lt;/p&gt;";
+      }
+      ?&gt;
+      </code></p>
+        <div class="border"></div>
+        
+        <a name="6"></a><a href="#toc">Top</a>
+       <h3>Extended Permissions and the Open Graph</h3>
+       <p>The final part of this help file deals with extending your application by using the open graph. I will only cover getting basic user permissions here and displaying a welcome message to a known user. There is a wealth of documentation located at <a href="http://developers.facebook.com">http://developers.facebook.com</a> and I would not be able to cover it all here. An example of a complete file can be found in the <b>advanced</b> folder of the download</p>
+       <p>The first thing we need to do is upload the <b>facebook.php</b> file that I've also included in the download to your web server in the same directory as your tab file. We then need to include this on our application page. We can do this via thew following line</p>
+       <code>&lt;?php include("facebook.php"); ?&gt;</code>
+       <p>Next we need to create an instance of the Facebook class using our App Id and App Secret. Again, add the following code underneath the <b>include</b> statement above. Replace the xxxxxxxxxxxx's with the values for your application. If you've already added the <b>$APP_SECRET</b> variable for use with the <b>facebook_page_app</b> class before this statement then there is no need to include it again.</p>
+       <code>
+       &lt;php<br />
+       $APP_ID = "xxxxxxxxxxxxxxxxx";<br />
+		$APP_SECRET = "xxxxxxxxxxxxxxxxxxxxxxx";<br />
+        $facebook = new Facebook(array(<br />
+          'appId'  => $APP_ID, <br />
+          'secret' => $APP_SECRET,<br />
+          'cookie' => true,<br />
+           'uploadSupport' =>true<br />
+	)); <br />
+	?&gt;
+       </code>
+       <p>Finally we run a check to see if we know who the user is. We have access to this information if the user has authorised our application. If they haven't we'd best ask them too! This can be achieved with the following code:</p>
+       <code>
+           &lt;?php <br />
+    $session = $facebook->getSession();<br />
+    $access_token = $facebook->getAccessToken();<br />
+    $me = null;<br />
+    // Session based API call.<br />
+    if ($session) {<br />
+      try {
+        $uid = $facebook->getUser();<br />
+        $me = $facebook->api('/me');<br />
+      } catch (FacebookApiException $e) {<br />
+        error_log($e);<br />
+      }<br />
+    }  <br />
+    if($me){ // This line checks if we know who they are!<br />
+     echo "&lt;p&gt;Hi, ".$me['name'].", I know who you are!&lt;/p&gt;"	;<br />
+    }else{ //If they haven't we can redirect them to a page to authorize our application. We have to use a redirect_uri to send them to the url of our site.<br />
+     echo "&lt;p&gt;Looks like you haven't authorized my app. &lt;a href=\"https://www.facebook.com/dialog/oauth?client_id=".$APP_ID."&redirect_uri=http://your-site.com/\" target=\"_top\">Authorize it here!&lt;/a&gt;&lt;/p&gt;";	<br />
+    }<br />
+    
+    ?&gt;<br />
+       </code>
+       <p>Depending on whether or not you've authorised your application you should see something similar to below</p>
+       <p><img src="assets/open-graph.jpg" alt="signed in" /></p>
+       <p>And that's it!. There is of course a lot more uses once we know who a user is, but as I say it is slightly out of scope for this tutorial. I'm happy to try and answer questions about the open graph where possible, but it is not the focus of this app. This is primarily to help make creating content for your pages easier. Again feel free to contact me using the details at the top of this document for any other support queries!</p>
+       
+       <a href="#toc">Top</a>
+       <div class="border"></div>
+       <div class="clear"></div>
+    </div>
+</div>
+</body>
+</html>
