@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<script type="text/javascript">
+window.fbAsyncInit = function() {
+FB.Canvas.setSize();
+}
+// Do things that will sometimes call sizeChangeCallback()
+function sizeChangeCallback() {
+FB.Canvas.setSize();
+}
+</script>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+<style type="text/css">
+html, body, div, span, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	list-style-type:none;
+}
+body {
+	line-height: 1;
+	width:520px;
+	margin:0; padding:0; border:0;
+}
+.container {
+	background-image:url("images/bg.png");
+	height:706px;
+	width:520px;
+}
+.wrapper {
+
+}
+.bottomcontainer {
+	width:520px;
+}
+p {
+	font-family: 'PT Serif', arial, serif;
+	color: #4c3811;
+}
+.top-banner {
+	margin-bottom:88px;
+}
+.top-banner p {
+	color:#fff;
+	height: 26px;
+	font-weight:bold;
+	padding-top:12px;
+	margin-left:90px;
+}
+.left {
+	width: 142px;
+	float: left;
+}
+.left a {
+	color:#442f07;
+	text-decoration:none;
+	font-family: 'PT Serif', arial, serif;
+}
+.left a:hover {
+	text-decoration:underline;
+}
+.left ul {
+	padding-left:4px;
+}
+.left li {
+	height:37px;
+	font-size:14px;
+}
+.left li img {
+	vertical-align: middle;
+	margin-right:4px;
+}
+.right {
+	float:left;
+	width:342px;
+	margin-top:3px;
+	padding-left:18px;
+}
+.join {
+	border:1px solid #e2dbc5;
+}
+.join:hover {
+	border:1px solid #c0b38a;
+}
+.floatleft {
+	float:left;
+}
+.floatright {
+float: right;
+}
+.rightshare {
+left: 65px;
+position: relative;
+}
+.clearfloat {
+	float:clear;
+}
+.details {
+	color:#754d18;
+	line-height:1.2;
+}
+.book {
+	margin:0 5px 5px 0;
+}
+
+.dolly {
+	width: 185px;
+	margin-top:0px;
+}
+
+h1 {
+	font-size:17px;
+	font-weight:bold;
+	margin:6px 0 6px 8px;
+}
+.buy {
+	background:#e4dac7;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	padding-bottom:5px;
+	margin-top:3px;
+}
+.productdetails {
+	width:150px;
+}
+.summary {
+	font-size:13px;
+	line-height:1.3;
+	margin-top:8px;
+}
+.blockcenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+.buy-buttons {
+	margin:0 0 5px 0;
+}
+.bottom {
+	background:url("images/bottom-bg.png");
+	background-repeat:repeat-y;
+	margin-top:-7px;
+	height:300px;
+	padding-left: 150px;
+}
+
+/*.product ul, .product li {
+	margin:0;
+	padding:0;
+	list-style:none;
+	color:#4c3811;
+}
+.product, .product li {
+	height:570px;
+	width:345px;
+	overflow:hidden;
+}*/
+
+/* cupid blue (inspired by okcupid.com)
+*******************************************************************************/
+button.buynow {
+  background: #d7e5f5;
+  background: -moz-linear-gradient(top, #d7e5f5 0%, #cbe0f5 100%);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#d7e5f5), to(#cbe0f5));
+  border-top: 1px solid #abbbcc;
+  border-left: 1px solid #a7b6c7;
+  border-bottom: 1px solid #a1afbf;
+  border-right: 1px solid #a7b6c7;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: inset 0 1px 0 0 #fff;
+  -webkit-box-shadow: inset 0 1px 0 0 #fff;
+  box-shadow: inset 0 1px 0 0 #fff;
+  color: #1a3e66;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 1;
+  padding: 6px 0 7px 0;
+  text-align: center;
+  text-shadow: 0 1px 1px #fff;
+  width: 130px;
+	margin:0 auto;
+}
+
+button.buynow:hover {
+  background: #ccd9e8;
+  background: -moz-linear-gradient(top, #ccd9e8 0%, #c1d4e8 100%);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccd9e8), to(#c1d4e8));
+  border-top: 1px solid #a1afbf;
+  border-left: 1px solid #9caaba;
+  border-bottom: 1px solid #96a3b3;
+  border-right: 1px solid #9caaba;
+  -moz-box-shadow: inset 0 1px 0 0 #f2f2f2;
+  -webkit-box-shadow: inset 0 1px 0 0 #f2f2f2;
+  box-shadow: inset 0 1px 0 0 #f2f2f2;
+  color: #163659;
+  cursor: pointer;
+}
+
+button.buynow:active {
+  border: 1px solid #8c98a7;
+  -moz-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eee;
+  -webkit-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eee;
+  box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eee;
+}
+.sharebtn {
+	font-family: "tahoma",sans-serif; font-size:12px;
+	border:1px solid #CAD4E7;
+	color: #3B5998;
+	-moz-border-radius: 4px;
+  	-webkit-border-radius: 4px;
+  	border-radius: 4px;
+	padding:4px 8px 2px 2px;
+	width:52px; height:16px;
+	text-align:center;
+	background-image:url('http://joeycody.com/dev/gsma/images/fb-share1.png');
+}
+.sharebtn a, a:hover {
+	color:#3B5998;
+	text-decoration:none;
+	background-image:none;
+	background-color:transparent;
+}
+
+.sharebtn:hover {
+	border:1px solid #9babc8;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<div class="container">
+		<div class="top-banner">
+			<p>CLICK LIKE TO CONNECT WITH GSMA!</p>
+		</div>
+		<div class="left">
+			<div class="rightshare">
+				<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:send href="http://www.facebook.com/GreatSmokyMountainsAssociation" font="arial"></fb:send>
+				
+			</div>
+			<a href="http://www.smokiesstore.org/browse.cfm/2,59.html" target="_blank"><img src="images/join.png" class="join blockcenter"></a>
+			<ul>
+				<li><img src="images/tree.png"><a href="http://www.thegreatsmokymountains.org/" target="_blank">GSMA Website</a></li>
+				<li><img src="images/rabbit.png"><a href="http://www.thegreatsmokymountains.org/blog/" target="_blank">GSMA Blog</a> </li> 
+				<li><img src="images/leaf.png"><a href="http://www.smokiesstore.org/" target="_blank">GSMA Store</a></li>    
+				<li><img src="images/bird.png"><a href="http://twitter.com/#!/Smoky_Mountain" target="_blank">GSMA Twitter</a></li>  
+				<li><img src="images/snail.png"><a href="http://www.youtube.com/greatsmokymountains" target="_blank">GSMA YouTube</a></li> 
+				<li><img src="images/butterfly.png"><a href="http://itunes.apple.com/podcast/great-smoky-mountains-national/id318334439" target="_blank">GSMA iTunes</a></li>
+				<li><img src="images/paw.png"><a href="http://www.facebook.com/GreatSmokyMountainsAssociation?sk=photos" target="_blank">GSMA Photos</a></li>    
+			</ul>                                                                 
+		</div>
+		<div class="right">
+			<div class="box">
+				<div class="product">
+					<img src="images/dolly.jpg" class="floatleft book dolly">
+					<div class="productdetails floatleft">
+						<p class="details"><strong>CD Dolly's Shakonohey</strong><br />
+							Mountain Music<br />
+							Item #:100601<br /><br />
+							<strong>Your Price:</strong> $5.00
+						</p>
+						<iframe src="http://www.facebook.com/plugins/like.php?app_id=221972677813661&amp;href=http%3A%2F%2Fwww.facebook.com%2FGreatSmokyMountainsAssociation&amp;send=false&amp;layout=standard&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:25px;" allowTransparency="true"></iframe>
+						<div class="buy">
+							<img src="images/cart.png" class="floatleft">
+							<h1 class="floatleft">BUY NOW:</h1>
+								<br />
+								<!--<li class="buy-buttons"><center>
+									<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z5S36SC
+B2NFJ6"><button class="buynow">PayPal</button></a>-->
+								</center></li>
+								<li class="buy-buttons"><center>
+									<a href="http://www.smokiesstore.org/browse.cfm/4,936.html" target="_blank"><button class="buynow">GSMA Store</button></a>
+								</center></li>
+								<center><li class="buy-buttons">
+									<a href="http://www.facebook.com/GreatSmokyMountainsAssociation?sk=app_135607783795" target="_blank"><button class="buynow">Facebook Store</button></a>
+								</li></center>
+								
+						</div>
+					</div>
+					<p class="summary floatleft"><br />SALE!! SALE!! SALE!! DOLLY PARTON SHAKONOHAY CD<br />Dolly Parton, Honorary Ambassador for the 75th Anniversary of Great Smoky Mountains National Park, is releasing a new album in honor of the event. Sha-Kon-O-Hey! contains 8 new songs written and sung by Dolly herself. And in keeping with her legendary generosity, Miss Parton is donating the proceeds to the park! Beautiful music for a great cause. It doesn't get any better than that. Shipping Alert: Low weight merchandise like CDs are generally less expensive to send via US Post Office rather than UPS.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bottomcontainer">
+		<div class="bottom">
+			<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/GreatSmokyMountainsAssociation" width="360" show_faces="true" stream="false" header="true"></fb:like-box>
+		</div>
+	</div>			
+</div>
+<script>
+FB.init({
+appId : '102128956541217',
+status : true, // check login status
+cookie : true, // enable cookies to allow the server to access the session
+xfbml : true // parse XFBML
+});
+</script>
+</body>
+</html>
